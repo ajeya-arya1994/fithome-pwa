@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f7faf7" />
+  <meta name="description" content="FitHome, a free offline-first fitness companion with guided workouts and local progress tracking." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="FitHome" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>FitHome · Move well, feel better</title>
+</head>
+<body>
+  <div class="desktop-backdrop" aria-hidden="true"><span class="orb orb-one"></span><span class="orb orb-two"></span></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a href="#home" class="brand" id="brandLink" aria-label="Go to FitHome home">
+        <span class="brand-mark" aria-hidden="true">⌂</span>
+        <span>Fit<span class="brand-heavy">Home</span><small>MOVE AT YOUR PACE</small></span>
+      </a>
+      <button class="icon-button avatar" type="button" data-nav="profile" aria-label="Open profile"> <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c.5-4.3 3-6.5 7-6.5s6.5 2.2 7 6.5"/></svg></button>
+    </header>
+    <main id="app" class="content" tabindex="-1"><div class="loading-view"><div class="loader"></div><p>Preparing FitHome…</p></div></main>
+    <nav id="bottomNav" class="bottom-nav" aria-label="Main navigation">
+      <button type="button" class="nav-btn active" data-nav="home" aria-label="Home"><span class="nav-ico" data-icon="home"></span><span>Home</span></button>
+      <button type="button" class="nav-btn" data-nav="workouts" aria-label="Workouts"><span class="nav-ico" data-icon="dumbbell"></span><span>Workouts</span></button>
+      <button type="button" class="nav-btn" data-nav="exercises" aria-label="Exercises"><span class="nav-ico" data-icon="book"></span><span>Exercises</span></button>
+      <button type="button" class="nav-btn" data-nav="progress" aria-label="Progress"><span class="nav-ico" data-icon="chart"></span><span>Progress</span></button>
+      <button type="button" class="nav-btn" data-nav="profile" aria-label="Profile"><span class="nav-ico" data-icon="user"></span><span>Profile</span></button>
+    </nav>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
