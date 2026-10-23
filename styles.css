@@ -18,3 +18,17 @@ html[data-theme="dark"]{color-scheme:dark;--ink:#e6efe8;--muted:#9aac9f;--border
 .content{overflow-y:auto;overscroll-behavior:contain;min-height:0;scrollbar-width:thin}
 .topbar,.bottom-nav{position:relative;flex-shrink:0}
 @media(min-width:650px){.app-shell{height:min(900px,calc(100dvh - 50px));min-height:550px}.content{min-height:0}}
+
+/* v2.0 — accessible, self-hosted exercise demonstrations */
+.demo-media{position:relative;border-radius:18px;background:#e3f1e9;overflow:hidden;border:1px solid #d7e7db;display:block;aspect-ratio:16/9;margin:14px 0 6px}
+.exercise-video{width:100%;height:100%;object-fit:contain;display:block;background:#e9f6ee;border-radius:17px}
+.demo-media .demo-watermark{position:absolute;left:10px;top:10px;border-radius:999px;background:rgba(250,255,251,.92);color:#17654e;font-size:9px;letter-spacing:.35px;font-weight:800;padding:7px 9px;pointer-events:none;max-width:85%}
+.demo-detail video{cursor:pointer}
+.exercise-thumb{width:67px;min-width:67px;height:68px;padding:0;background:#eaf5ee}
+.exercise-thumb img{height:100%;width:100%;object-fit:cover}
+.rest-demonstration{border-radius:18px;background:#ecf6ef;padding:15px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0;color:#175b46;font-size:12px}
+.rest-demonstration .rest-emoji{font-size:27px}.rest-demonstration strong{font-size:13px}.rest-demonstration img{width:94px;height:60px;border-radius:9px;margin-left:auto;object-fit:cover}
+html[data-theme="dark"] .demo-media,html[data-theme="dark"] .rest-demonstration{background:#1e392d;border-color:#345846;color:#d1eadc}
+@media (prefers-reduced-motion:reduce){.exercise-video{animation:none}}
+/* Video canvas already labels the exercise; avoid overlapping a second badge. */
+.demo-media .demo-watermark{display:none}

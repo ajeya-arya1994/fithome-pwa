@@ -1,4 +1,4 @@
-# FitHome — Functional PWA Prototype v1.0
+# FitHome — Functional PWA Prototype v2.0
 
 A completely free, installable, offline-first fitness app prototype created with plain HTML, CSS, and JavaScript. No subscriptions, trackers, cloud account, paid APIs, or JavaScript frameworks.
 
@@ -6,6 +6,8 @@ A completely free, installable, offline-first fitness app prototype created with
 
 - Five navigation tabs: Home, Workouts, Exercises, Progress, Profile.
 - Four guided workout templates and twelve original written exercise guides.
+- **12 original, locally bundled 4-second MP4 animated exercise demonstrations**, one per exercise, available in Exercise Details and the active Workout Player. Videos loop silently and require no external streaming or account.
+- Exercise thumbnails are included and video assets are precached for offline use after the first complete online load.
 - Session player with real countdowns, reps completed manually, rest periods, pause, resume, skip, stop, recovery of paused sessions, and summaries.
 - **Demo Mode** for testing the interface and timers without physically exercising. Demo sessions are excluded from real workout totals.
 - Exercise safety preference questions; real workout start is gated until the user answers the relevant symptom question. Exertional symptoms with no medical clearance block real sessions.
@@ -17,7 +19,7 @@ A completely free, installable, offline-first fitness app prototype created with
 
 ## Important limitations
 
-This is the **first functional prototype, not the final 25-screen app**. The full 50-exercise catalog, original demonstration videos/animations, 12-week plan builder, advanced adaptive recommendations, reminders, and native HealthKit integration are not implemented. Exercise art is currently an illustrative emoji; users should follow written movement instructions, not infer form from the emoji. Workout length is an estimate; actual completion times depend on the user.
+This is the **first functional prototype, not the final 25-screen app**. The full 50-exercise catalog, professionally filmed/verified human demonstrations, 12-week plan builder, advanced adaptive recommendations, reminders, and native HealthKit integration are not implemented. **Video demonstrations are simplified original vector animations, not real footage, medical instruction, or certified technique coaching.** Follow the written movement guidance and seek qualified advice for correct form. They do not verify your actual movement. Workout length is an estimate; actual completion times depend on the user.
 
 FitHome is **not** a medical device, diagnostic tool, or substitute for clinician-guided cardiac rehabilitation. The safety selector relies on self-reporting. With AVNRT ablation history and symptoms on exertion, obtain cardiology evaluation and clearance before progressive training; do not use this app to decide that exercise is medically safe. Stop for concerning symptoms and seek urgent care for chest pain, fainting, severe breathlessness, or palpitations accompanied by dizziness or weakness.
 
@@ -27,7 +29,7 @@ Personal data resides in browser storage on the installed device, not in GitHub 
 
 ## Run on a computer
 
-1. Download and unzip `FitHome_PWA_Prototype_v1.zip`.
+1. Download and unzip `FitHome_PWA_With_Video_Demos_v2.zip`.
 2. Open a terminal in the `fithome-pwa` folder.
 3. Run `python -m http.server 8000` (Python 3) or `python3 -m http.server 8000`.
 4. Visit `http://localhost:8000` in a browser.
@@ -62,7 +64,22 @@ GitHub Pages hosts **public source code**. Never put your personal health data, 
 - `manifest.webmanifest` — Home Screen PWA metadata
 - `sw.js` — offline cache
 - `icons/` — original generated app icons
+- `videos/` — 12 original H.264 MP4 demo loops plus JPG posters; upload **the entire folder** to GitHub; keep `videos/<id>.mp4` and `videos/<id>.jpg` together
 
 ## Testing performed
 
-Automated Chromium UI interactions checked navigation, demo workout start, countdown running, pause, workout completion, rest skipping, symptom-stop summary, measurements, and enabling real-workout start after answering safety preferences. JavaScript syntax checked with Node. Browser sandbox policy prevented a full localhost/HTTPS deployment-and-reload test; IndexedDB persistence and iPhone PWA installation **still need testing on the hosted site**.
+Original v1 automated Chromium interaction tests covered workout flows and measurement entry. For v2, Chromium tests confirmed exercise video decode/playback (640×360 H.264, 4 seconds), video-based exercise detail view, video pausing with workout controls, session progression and rest preview with no JavaScript errors. Node syntax checks and ffprobe metadata checks passed. Browser security policy blocked a full localhost/HTTPS service-worker test; **offline video caching, browser persistence after real URL reload, and iPhone installation still require a GitHub Pages device test**.
+
+## Updating an existing FitHome GitHub Pages installation from v1
+1. Keep your existing GitHub repository and its published Pages URL.
+2. Upload the updated `index.html`, `app.js`, `styles.css`, `sw.js`, and `README.md` plus the complete `videos/` directory. Retain `icons/` and `manifest.webmanifest`. **Do not upload only the PNG icons — videos use the new `videos/` folder.**
+3. Make sure `videos/march.mp4`, `videos/march.jpg` and the other 11 pairs appear at the repository root under `videos/`.
+4. After Pages deployment, fully close and reopen the Home Screen app; if needed open the GitHub Pages URL in Safari and reload once while online to update the service-worker cache.
+5. Test **Exercises → Bird Dog → play** and **Workouts → Beginner Foundation → Test demo**.
+6. Existing local profile, workout history, and backup schema are intentionally preserved: v2 uses the same IndexedDB record key as v1. Still export a backup before upgrading.
+
+## Video specifications
+- Original procedural motion illustrations generated for this project; no external copyrighted videos.
+- 4 seconds per clip, 640×360, 12 fps, H.264 AVC, silent, looping, iPhone-compatible MP4.
+- Written instructions and safety notices take priority; animations depict simplified movement only.
+- Audio narration, real-person footage, additional 38 exercises, and professional form review remain pending.
